@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>SignUp</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<link href="/styles/sample.css" rel="stylesheet" type="text/css">
+	<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+
+</head>
+
+<body>
+	<ul>
+		<% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+		<li><%= error.message %></li>
+		<% }) %> <% } %>
+	</ul>
+	<div class="main-w3layouts wrapper">
+		<h1>SignUp Here</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="/users/register" method="POST">
+					<input id="name" name="name" placeholder="Name" required class="text" type="text">
+					<input id="email" name="email" placeholder="Email" required class="text email" type="email">
+					<input id="password" name="password" placeholder="Password" required class="text" type="password">
+					<input id="password2" name="password2" placeholder="Confirm password" required class="text w3lpass" type="password">
+					<div class="custom-select" style="width:200px;">
+						<select id="plan" name="plan">
+							<option value="0">Select Plan:</option>
+							<option value="1">Plan 1</option>
+							<option value="2">Plan 2</option>
+							<option value="3">Plan 3</option>
+							<option value="4">Plan 4</option>
+						</select>
+					</div>
+					<input type="submit" value="SIGNUP">
+				</form>
+				<p>Already have an Account? <a href="/users/login">Login here</a></p>
+			</div>
+		</div>
+
+		<ul class="colorlib-bubbles">
+			<li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+		</ul>
+	</div>
+	<script src="/Scripts/register.js"></script>
+</body>
+
+</html>

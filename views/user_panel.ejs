@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />    
+  <link href="/styles/dashboard.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <title>Dashboard</title>
+</head>
+<body>  
+  <div class="navbar" style="background-color:powderblue;">
+    <p style="text-align: center;">Some Extra space</p>
+  </div>    
+  <div class="navbar">
+    <a href="#1"><i class="fas fa-search"></i> Query Builder</a>
+    <a href="#2"><i class="far fa-file-alt"></i> Reports</a>
+    <div class="dropdown">
+      <button class="dropbtn">
+        <i class="fas fa-user-cog"></i>
+        Admin
+      </button>
+      <div class="dropdown-content">      
+        <% if (!!user.is_admin === false) { %> 
+          <a href="/changepassword">User Config</a>
+        <% } %>
+        <% if (!!user.is_admin === true) { %> 
+          <a href="/users_list">User Config</a>
+        <% } %>
+      </div>
+    </div> 
+    <a style="float:right" href="/users/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+  <div class="center">
+    <h1><%= user_config.name %></h1>
+    <button class="button" onclick="changeStatus('<%= user_config.email%>')" id='<%= user_config.email%>'>
+      <% if (!!user_config.status === true) {%>Deactivate<%} %><% if (!!user_config.status === false) {%>Activate<%} %>   
+    </button>
+    <div class="user-config-form">
+      <input type="password" id="change_pass">
+      <input type="password" id="conf_change_pass">
+      <button class="button" onclick="changePass('<%= user_config.email%>')">Change Password</button>
+    <div>
+  </div>
+</body>
+
+<script src="/Scripts/userPanel.js"></script>
+</html>
